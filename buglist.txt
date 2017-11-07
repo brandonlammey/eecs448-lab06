@@ -1,0 +1,15 @@
+isEmpty() - always returns boolean value true no matter size of list
+  return statement is always true
+
+removeFront() - does not remove elements from list or change list size
+  always returns false since element is not removed
+
+removeBack() - does not remove elements from list or change list size
+  always returns false since element is not removed
+
+size() - returns incorrect values due to bugs inside removeBack and removeFront not removing elements
+
+addBack() - does not add in correct order
+  adds to front of list
+
+addBack() and addFront() - both can take double and char input which is converted into ints

@@ -1,7 +1,12 @@
+/**
+*	@file Test.cpp
+*	@author: Brandon Lammey
+*	@date: 6 November 2017
+*	@brief Implementation of Test.h
+* Tests fucntions of a LinkedListOfInts
+*/
 
-  //std::std::vector<int> v = list.toVector();
-
-
+#include "Test.h"
   void Test::runTests()
   {
     std::cout << "===== RUN TESTS ===== \n \n";
@@ -51,6 +56,10 @@
 
     std::cout << "*** Test removeBack *** \n \n";
     test_removeBack();
+    std::cout << '\n';
+
+    std::cout << "*** Test search *** \n \n";
+    test_search();
     std::cout << '\n';
 
     std::cout << "===== TESTS COMPLETE ===== \n \n";
@@ -1329,15 +1338,138 @@
     }
   }
 
-  //Check search finds item
-  //Using
-  //addFront
-  //addBack
-  //removeFront
-  //removeBack
-  //isEmpty
-  //size
+  //Check search returns
+  //true when item is in list
+  //false when item is not in list
   void Test::test_search()
   {
+    LinkedListOfInts list1;
+    LinkedListOfInts list2;
+    LinkedListOfInts list3;
+    LinkedListOfInts list4;
+
+
+    if(list1.search(0) == false || list1.search(0) == true)
+    {
+      std::cout << "Test if search returns a bool on empty list: PASSED! \n";
+    }
+    else
+    {
+      std::cout << "Test if search returns a bool on empty list: FAILED! \n";
+    }
+
+    list1.addFront(0);
+    if(list1.search(0) == false || list1.search(0) == true)
+    {
+      std::cout << "Test if search returns a bool on non-empty list: PASSED! \n";
+    }
+    else
+    {
+      std::cout << "Test if search returns a bool on non-empty list: FAILED! \n";
+    }
+
+
+    list2.addFront(0);
+
+    if(list2.search(0))
+    {
+      std::cout << "Test if search finds int in list with only one correct int: PASSED! \n";
+    }
+    else
+    {
+        std::cout << "Test if search finds int in list with only one correct int: FAILED! \n";
+    }
+
+    list2.addFront(0);
+    list2.addFront(19);
+    list2.addFront(1000);
+    list2.addFront(700);
+    list2.addFront(38);
+
+    if(list2.search(0))
+    {
+      std::cout << "Test if search finds int in list with multiple correct ints: PASSED! \n";
+    }
+    else
+    {
+        std::cout << "Test if search finds int in list with multiple correct ints: FAILED! \n";
+    }
+
+    for(int i = 0; i < 1000; i++)
+    {
+      list3.addFront(i);
+    }
+    if(list3.search(467))
+    {
+      std::cout << "Test if search finds int in list with 1000 elements: PASSED! \n";
+    }
+    else
+    {
+        std::cout << "Test if search finds int in list with 1000 elements: FAILED! \n";
+    }
+
+    if(!list3.search(1001))
+    {
+      std::cout << "Test if search returns false for element not in list: PASSED! \n";
+    }
+    else
+    {
+        std::cout << "Test if search returns false for element not in list: FAILED! \n";
+    }
+
+    list4.addFront(5);
+    list4.addFront(19);
+    list4.addFront(1000);
+    list4.addFront(700);
+    list4.addFront(38);
+    list4.addFront(0);
+    list4.addFront(0);
+    list4.addFront(38);
+
+    std::vector<int> v = list4.toVector();
+    int test[] = {38, 0, 0, 38, 700, 1000, 19, 5};
+    bool testBool = true;
+
+    list4.search(90);
+    list4.search(73);
+    list4.search(21);
+    list4.search(0);
+    list4.search(5);
+    list4.search(38);
+
+    if(list4.size() == v.size())
+    {
+      std::cout << "Test search does not modify size of list: PASSED! \n";
+    }
+    else
+    {
+      std::cout << "Test search does not modify size of list: FAILED! \n";
+    }
+
+    if(v.size() == 8)
+    {
+      std::cout << "Test search does not add/remove elements in the list: PASSED! \n";
+    }
+    else
+    {
+      std::cout << "Test search does not add/remove elements in the list: FAILED! \n";
+    }
+
+    std::vector<int> v2 = list4.toVector();
+    for(int i =0; i<v2.size(); i++)
+    {
+
+      if(v2[i] != test[i])
+        testBool = false;
+    }
+
+    if(testBool)
+    {
+      std::cout << "Test search does not modify element contents in list: PASSED! \n";
+    }
+    else
+    {
+      std::cout << "Test search does not modify element contents in list: FAILED! \n";
+    }
 
   }

@@ -1,6 +1,19 @@
+/**
+*	@file Test.h
+*	@author: Brandon Lammey
+*	@date: 6 November 2017
+*	@brief Header file for Test.cpp
+* Tests fucntions of a LinkedListOfInts
+* Assumes toVector() is correctly implemented
+*/
+
 #ifndef TEST_H
 #define TEST_H
 
+
+#include <iostream>
+#include <vector>
+#include "LinkedListOfInts.h"
 
 class Test
 {
@@ -59,17 +72,12 @@ public:
   //Check appropriate elements are removed the list
   void test_removeBack();
 
-  //Check search finds item
-  //Using
-  //addFront
-  //addBack
-  //removeFront
-  //removeBack
-  //isEmpty
-  //size
+  //Check search returns
+  //true when item is in list
+  //false when item is not in list
   void test_search();
 
 };
-#include "Test.cpp"
+
 
 #endif
